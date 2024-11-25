@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8000/api',
+    //${window.location.host}
+    baseURL: `http://localhost:8000/api`,
     headers: {
         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
     }
