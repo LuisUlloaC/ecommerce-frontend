@@ -2,8 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 
 const Sidebar = () => {
-    const dispatch = useDispatch();
-    let show = useSelector((state) => state.sidebarShow);
+    //const dispatch = useDispatch();
 
 
     return (

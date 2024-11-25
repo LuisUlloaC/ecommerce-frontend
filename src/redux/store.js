@@ -1,39 +1,15 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit"
+import loginReducer from "./slices/session"
+//import userReducer from "./slices/user"
 
-// USERS REDUCERS IMPORTS
-import {
-    userLoginReducers,
-    userDeleteReducer,
-    userCreateReducer,
-    userDetailsReducers,
-    userUpdateReducer,
-  } from "./reducers/userReducers";
-
-
-const userInfoFromStorage = localStorage.getItem("userInfo")
-  ? JSON.parse(localStorage.getItem("userInfo"))
-  : null;
-
-
-export const initialState = {
-  sidebarShow: true,
-  userLogin: { userInfo: userInfoFromStorage },
-};
-
-
-const reducers = combineReducers({
-    //USER REDUCERS
-    userLogin: userLoginReducers,
-    userDelete: userDeleteReducer,
-    userCreate: userCreateReducer,
-    userUpdate: userUpdateReducer,
-    userDetails: userDetailsReducers,
-})
 
 
 const store = configureStore({
-    reducer: reducers,
-    initialState
+  devTools: false,
+  reducer: {
+    login: loginReducer,
+    //user: userReducer,
+  }
 });
 
 export default store;

@@ -1,16 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../redux/actions/userActions";
+import { useEffect, useState } from "react";
+import { clearErrorLogin, loginUser, resetSuccessLogin } from "../redux/slices/session";
+import { useNavigate } from "react-router-dom";
 
 
-const Login = ({location, history}) => {
-    const dispatch = useDispatch();
+const Login = () => {
+    //const dispatch = useDispatch();
+    let navigate = useNavigate();
+    const [isRedirectiing, setRedirecting] = useState(false)
 
-    const userLogin = useSelector((state) => state.userLogin);
-    const { loading, userInfo, error } = userLogin;
+    //const error = useSelector(state => state.login.errorLogin)
+    //const success = useSelector(state => state.login.successLogin)
+
+    useEffect(() => {
+        if (success) {
+            //dispatch(resetSuccessLogin())
+            setTimeout(() => {
+                setRedirecting(true)
+               // navigate('/')
+            }, 1000)
+        } else if (error) {
+            //dispatch(clearErrorLogin())
+            console.log('error: ', error)
+        }
+    }, [success, error, dispatch,])
 
     function authenticate() {
-        console.log("LOGIN")
-        dispatch(login("admin@admin.com", "admin"))
+        //dispatch(loginUser({ email: "admin@admin.com", password: "admin" }))
     }
 
     return (
