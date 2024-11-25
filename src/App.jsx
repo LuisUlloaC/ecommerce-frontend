@@ -11,12 +11,14 @@ function App() {
 
   return (
     <Router>
+      <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/auth" element={<Login />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
           </Route>
         </Routes>
+      </Suspense>
     </Router>
   )
 
